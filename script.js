@@ -139,6 +139,9 @@ $(document).ready(function () {
     $('#studentForm').on('submit', function (event) {
         let isValid = true;
 
+        // Clear previous form-wide error
+        $('#formError').text('');
+
         // FINAL CHECK FOR EMPTY REQUIRED FIELDS
         $('input[required], select[required]').each(function () {
             const $this = $(this);
@@ -162,11 +165,12 @@ $(document).ready(function () {
                 isValid = false;
             }
         }
+
         if (!isValid) {
             event.preventDefault();
-            alert('Please fill out all required fields correctly.');
-        } 
+            $('#formError').text('Please fill out all required fields correctly.');
+        }
     });
 
-});
 
+});
