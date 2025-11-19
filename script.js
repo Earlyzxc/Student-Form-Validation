@@ -62,7 +62,7 @@ $(document).ready(function () {
         $('#' + id + 'Error').text(msg || '');
     }
 
-    // Validation
+    // Validation (basic required fields)
     $('#lastName, #firstName, #dob, #address, #course, #year, #section, #gender')
         .on('input blur change', function () {
             const $this = $(this);
@@ -70,6 +70,24 @@ $(document).ready(function () {
             const isValid = value !== "";
             setFieldState($this, isValid, isValid ? '' : 'This field is required.');
         });
+
+    // Date of Birth – cannot be in the future
+    $('#dob').on('change blur', function () {
+        const $this = $(this);
+        const value = $this.val();
+
+        if (!value) {
+            setFieldState($this, false, 'This field is required.');
+            return;
+        }
+
+        const inputDate = new Date(value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const isValid = inputDate <= today;
+        setFieldState($this, isValid, isValid ? '' : 'Date of birth cannot be in the future.');
+    });
 
     // Student Number
     $('#studentNumber').on('input blur', function () {
@@ -121,7 +139,7 @@ $(document).ready(function () {
     $('#studentForm').on('submit', function (event) {
         let isValid = true;
 
-        // FINAL CHECK
+        // FINAL CHECK FOR EMPTY REQUIRED FIELDS
         $('input[required], select[required]').each(function () {
             const $this = $(this);
             const value = $this.val().trim();
@@ -131,10 +149,24 @@ $(document).ready(function () {
             }
         });
 
+        // Extra final Birthday check (future date)
+        const dobInput = $('#dob');
+        const dobVal = dobInput.val();
+        if (dobVal) {
+            const dobDate = new Date(dobVal);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (dobDate > today) {
+                setFieldState(dobInput, false, 'Date of birth cannot be in the future.');
+                isValid = false;
+            }
+        }
         if (!isValid) {
             event.preventDefault();
             alert('Please fill out all required fields correctly.');
-        }
+        } 
     });
+
 });
 
