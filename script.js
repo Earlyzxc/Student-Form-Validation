@@ -63,7 +63,7 @@ $(document).ready(function () {
     }
 
     // Validation
-    $('#lastName, #firstName, #middleName, #dob, #address, #course, #year, #section, #gender')
+    $('#lastName, #firstName, #dob, #address, #course, #year, #section, #gender')
         .on('input blur change', function () {
             const $this = $(this);
             const value = $this.val().trim();
@@ -137,3 +137,4 @@ $(document).ready(function () {
         }
     });
 });
+
