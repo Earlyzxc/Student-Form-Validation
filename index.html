@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Student Information Form</h1>
+        <form id="studentForm" action="javascript:void(0);" method="POST">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Ex. Dela Cruz" required>
+            <div class="error-message" id="lastNameError"></div>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Ex. Juan" required>
+            <div class="error-message" id="firstNameError"></div>
+
+            <label for="middleName">Middle Name (Optional):</label>
+            <input type="text" id="middleName" name="middleName" placeholder="Ex. Rosales">
+            <div class="error-message" id="middleNameError"></div>
+
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="">Select Program</option>
+                <option value="ICS">BSIT</option>
+                <option value="ICS">BSCpE</option>
+                <option value="IBE">BSE</option>
+                <option value="IBE">BSBA</option>
+                <option value="ITE">BEEd</option>
+                <option value="ITE">BSEd-ECED</option>
+            </select>
+            <div class="error-message" id="courseError"></div>
+
+            <label for="year">Year:</label>
+            <select id="year" name="year" required disabled>
+                <option value="">Select Year Level</option>
+                <option value="1st">1st Year</option>
+                <option value="2nd">2nd Year</option>
+                <option value="3rd">3rd Year</option>
+                <option value="4th">4th Year</option>
+            </select>
+            <div class="error-message" id="yearError"></div>
+
+            <label for="section">Section:</label>
+            <select id="section" name="section" required disabled>
+                <option value="">Select Section</option>
+            </select>
+            <div class="error-message" id="sectionError"></div>
+
+            <label for="studentNumber">Student Number:</label>
+            <input type="text" id="studentNumber" name="studentNumber" placeholder="24-XXXXX" required>
+            <div class="error-message" id="studentNumberError"></div>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            <div class="error-message" id="dobError"></div>
+
+            <label for="address">Complete Address:</label>
+            <input type="text" id="address" name="address" placeholder="Street Name" required>
+            <div class="error-message" id="addressError"></div>
+
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" name="contact" placeholder="09123456789" required>
+            <div class="error-message" id="contactError"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+            <div class="error-message" id="emailError"></div>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <div class="error-message" id="genderError"></div>
+
+            <label for="profilePic">Profile Picture:</label>
+            <input type="file" id="profilePic" name="profilePic">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script> 
+</body>
+</html>
